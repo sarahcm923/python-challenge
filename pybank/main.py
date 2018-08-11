@@ -4,9 +4,17 @@ import os
 # Module for reading CSV files
 import csv
 
-csvpath = os.path.join('/Users/sarahsteimle/CWCL201807DATA2-Class-Repository-DATA/Week3Python/Day2/Activities/08-Stu_ReadNetFlix/Resources', 'netflix_ratings.csv')
+# define variables
+average_change = 0
+month_counter = 0
+last_row = 0
+profit_increase = 0
+profit_inc_month = ""
+profit_decrease = 0
+profit_dec_month = ""
+net_profit_loss = 0
 
-found = False
+csvpath = os.path.join('/Users/sarahsteimle/CWCL201807DATA2-Class-Repository-DATA/Homework/hmw3Python/PyBank/Resources', 'budget_data.csv')
 
 # Method 2: Improved Reading using CSV module
 
@@ -18,30 +26,33 @@ with open(csvpath, newline='') as csvfile:
     # Read the header row first (skip this step if there is now header)
     csv_header = next(csvreader)
 
-# define variables
-month_counter = 0
-profit_increase = 0
-profit_decrease = 0
-net_profit_loss = 0
-average_change = 0.00
+    # loop through rows
+    for row in csvreader:
+        month_counter = month_counter + 1
+        current_row = int(row[1])
 
-# loop through rows
-i = 1
+        if ((current_row - last_row) > profit_increase):
+            profit_increase = current_row - last_row
+            profit_inc_month = row[0]
 
-for row[1] in csvreader:
-    month_counter = month_counter + 1
+        elif (profit_decrease > (current_row - last_row)):
+            profit_decrease = current_row - last_row
+            profit_dec_month = row[0]
 
-    if (double(column[i]) - double(column[i-1]) > profit_increase):
-        profit_increase = double(column[i]) - double(column[i-1])   
-    elif (profit_decrease > double(column[i]) - double(column[i-1])):
-        profit_decrease = double(column[i]) - double(column[i-1])
+        last_row = current_row
+        net_profit_loss = net_profit_loss + current_row
+        
 
-    net_profit_loss = net_profit_loss + double(column[i])
+average_change = ( net_profit_loss / month_counter)
 
-    i +=1
+print("")
+print("Financial Analysis")
+print("----------------------------")
+print("Total Months: " + str(month_counter))
+print("Total: $" + str(net_profit_loss))
+print("Average Change: $" + str(average_change))
+print("Greatest Increase in Profits: " + str(profit_inc_month) + " ($" + str(profit_increase) + ")")
+print("Greatest Decrease in Profits: " + str(profit_dec_month) + " ($" + str(profit_decrease) + ")")
+print("'''")
 
-
-average_change = (net_profit_loss / month_counter)
-
-print (blah blah)
 #export to file
