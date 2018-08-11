@@ -44,6 +44,7 @@ with open(csvpath, newline='') as csvfile:
         
 
 average_change = ( net_profit_loss / month_counter)
+average_change = round(average_change,2)
 
 print("")
 print("Financial Analysis")
@@ -56,3 +57,21 @@ print("Greatest Decrease in Profits: " + str(profit_dec_month) + " ($" + str(pro
 print("'''")
 
 #export to file
+# Specify the file to write to
+output_path = os.path.join('/Users/sarahsteimle/CWCL201807DATA2-Class-Repository-DATA/Homework/hmw3Python/PyBank', "budget_data_output.txt")
+
+# Open the file using "write" mode. Specify the variable to hold the contents
+with open(output_path, 'w') as file:
+
+    #for line in file:
+        # Write the first row (column headers)
+        file.writelines("'''\n")
+        file.writelines("Financial Analysis\n")
+        file.writelines("----------------------------\n")
+        file.writelines("Total Months: " + str(month_counter)+ "\n")
+        file.writelines("Total: $" + str(net_profit_loss)+ "\n")
+        file.writelines("Average Change: $" + str(average_change)+ "\n")
+        file.writelines("Total Months: " + str(month_counter)+ "\n")
+        file.writelines("Greatest Increase in Profits: " + str(profit_inc_month) + " ($" + str(profit_increase) + ")\n")
+        file.writelines("Greatest Decrease in Profits: " + str(profit_dec_month) + " ($" + str(profit_decrease) + ")\n")
+        file.writelines("'''\n")
