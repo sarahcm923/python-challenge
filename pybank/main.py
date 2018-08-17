@@ -14,7 +14,7 @@ profit_decrease = 0
 profit_dec_month = ""
 net_profit_loss = 0
 
-csvpath = os.path.join('/Users/sarahsteimle/CWCL201807DATA2-Class-Repository-DATA/Homework/hmw3Python/PyBank/Resources', 'budget_data.csv')
+csvpath = os.path.join('Resources/', 'budget_data.csv')
 
 # Method 2: Improved Reading using CSV module
 
@@ -58,7 +58,7 @@ print("'''")
 
 #export to file
 # Specify the file to write to
-output_path = os.path.join('/Users/sarahsteimle/CWCL201807DATA2-Class-Repository-DATA/Homework/hmw3Python/python-challenge/PyBank', "budget_data_output.txt")
+output_path = os.path.join('python-challenge/PyBank/', "budget_data_output.txt")
 
 # Open the file using "write" mode. Specify the variable to hold the contents
 with open(output_path, 'w') as file:

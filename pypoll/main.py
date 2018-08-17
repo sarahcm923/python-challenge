@@ -17,7 +17,7 @@ OTooley = 0
 cand_list = []
 winner = 0
 
-csvpath = os.path.join('/Users/sarahsteimle/CWCL201807DATA2-Class-Repository-DATA/Homework/hmw3Python/PyPoll/Resources', 'election_data.csv')
+csvpath = os.path.join('Resources/', 'election_data.csv')
 
 # Method 2: Improved Reading using CSV module
 
@@ -68,7 +68,7 @@ print("***")
 
 #export to file
 # Specify the file to write to
-output_path = os.path.join('/Users/sarahsteimle/CWCL201807DATA2-Class-Repository-DATA/Homework/hmw3Python/python-challenge/PyPoll', "election_results_output.txt")
+output_path = os.path.join('python-challenge/PyPoll', "election_results_output.txt")
 
 # Open the file using "write" mode. Specify the variable to hold the contents
 with open(output_path, 'w') as file:
